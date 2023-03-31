@@ -23,23 +23,9 @@ const stringToNumberArray = (str) => {
   return arr;
 };
 
-export const getEligibleGroupIds = () => {
-  try {
-    return stringToNumberArray(getEnvirement("ELIGIBLE_TELEGRAM_GROUP_IDS"));
-  } catch (e) {
-    console.error(e);
-    return [];
-  }
-};
 
-export const getEligibleUserIds = () => {
-  try {
-    return stringToNumberArray(getEnvirement("ELIGIBLE_TELEGRAM_USER_IDS"));
-  } catch (e) {
-    console.error(e);
-    return [];
-  }
-};
+
+
 
 export const getTranslate = (lang = "tr") => {
   return i18n[lang].noAnswer;
