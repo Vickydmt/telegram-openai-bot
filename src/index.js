@@ -1,8 +1,6 @@
 import telegramBot from "./telegramBot.js";
 import openaiClient from "./openaiClient.js";
 import {
-  getEligibleGroupIds,
-  getEligibleUserIds,
   getTranslate,
 } from "./util.js";
 
@@ -43,20 +41,3 @@ telegramBot.onText(/\/answer (.+)/, async (msg, match) => {
     });
   }
 });
-
-const filterChat = (msg) => {
-  let type = msg.chat.type;
-  if (
-    type === "supergroup" &&
-    getEligibleGroupIds().some((e) => e === msg.chat.id)
-  ) {
-    return true;
-  }
-  if (
-    type === "private" &&
-    getEligibleUserIds().some((e) => e === msg.chat.id)
-  ) {
-    return true;
-  }
-  return false;
-};
